@@ -9,15 +9,18 @@ export INSTALL_K3S_EXEC=" --no-deploy servicelb --no-deploy traefik"
 curl -sfL https://get.k3s.io | sh -
 
 # Install helm 3
+echo "\n\n***---INSTALL HELM  3---***"
 curl -fsSL -o get_helm.sh https://raw.githubusercontent.com/helm/helm/main/scripts/get-helm-3
 chmod 700 get_helm.sh
 ./get_helm.sh
 
+echo "\n\n***---GET TOKEN MASTER NODE---***\n"
 echo "Token: sudo cat /var/lib/rancher/k3s/server/node-token" 
 sudo cat /var/lib/rancher/k3s/server/node-token
 
+echo "\n\n***---UNINSTALL K3S---***\n"
 echo "Uninstall k3s : /usr/local/bin/k3s-agent-uninstall.sh"
 
-echo "Install worker node with commands"
+echo "\n\n***---INSTALL WORKER NODE WITH COMMANDS---***\n"
 echo "export K3S_URL=\"https://$(hostname -I | awk '{print $1}'):6443\""
 echo "export K3S_TOKEN=$(sudo cat /var/lib/rancher/k3s/server/node-token)"
