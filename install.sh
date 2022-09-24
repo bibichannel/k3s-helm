@@ -7,6 +7,7 @@ export K3S_KUBECONFIG_MODE="644"
 export INSTALL_K3S_EXEC=" --no-deploy servicelb --no-deploy traefik"
 
 curl -sfL https://get.k3s.io | sh -
+mkdir ~/.kube
 kubectl config view --raw > ~/.kube/config
 
 # Install package manager of kubernetes: helm 3
